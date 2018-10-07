@@ -32,6 +32,8 @@ import loss_func as tf_func
 import pickle
 from collections import namedtuple
 
+import yaml # New Line Added, to parse the config file
+
 
 
 
@@ -41,7 +43,7 @@ Word2Vec = namedtuple('Word2Vec', ['train_inputs', 'train_labels', 'loss', 'opti
 
 def maybe_create_path(path):
   if not os.path.exists(path):
-    os.mkdir(path)
+    os.makedirs(path) ## Changed this line, since makedirs can handle nested directories
     print ("Created a path: %s"%(path))
 
 
@@ -113,6 +115,37 @@ def generate_batch(data, batch_size, num_skips, skip_window):
   batch = np.ndarray(shape=(batch_size), dtype=np.int32)
   labels = np.ndarray(shape=(batch_size, 1), dtype=np.int32)
 
+  window_size = 2 * skip_window + 1
+
+  window = collections.deque(maxlen=window_size)
+  
+  if data_index + window_size > len(data):
+    data_index = 0
+  
+  window.extend(data[data_index:data_index + window_size])
+  data_index += window_size
+  
+  context_word_indexes = [w for w in range(window_size) if w != skip_window]
+  
+  for i in range(batch_size // num_skips):
+    sampled_words = random.sample(context_word_indexes, num_skips)
+    
+    for j, context_word in enumerate(sampled_words):
+      batch[i * num_skips + j] = window[skip_window]
+      labels[i * num_skips + j, 0] = window[context_word]
+    
+    if data_index == len(data):
+      window.extend(data[0:window_size])
+      data_index = window_size
+    
+    else:
+      window.append(data[data_index])
+      data_index += 1
+  
+
+  return batch, labels
+
+
   """
   =================================================================================
 
@@ -158,7 +191,7 @@ def generate_batch(data, batch_size, num_skips, skip_window):
 
 
 
-def build_model(sess, graph, loss_model):
+def build_model(sess, graph, loss_model, lr=1.0): ## Changed this line to add Learning Rate as a parameter
   """
   Builds a tensor graph model
   """
@@ -169,7 +202,7 @@ def build_model(sess, graph, loss_model):
       # Input data.
       train_inputs = tf.placeholder(tf.int32, shape=[batch_size])
       train_labels = tf.placeholder(tf.int32, shape=[batch_size, 1])
-      valid_dataset = tf.constant(valid_examples, dtype=tf.int32)
+      valid_dataset = tf.constant(valid_examples, dtype=tf.int32) ## $$
 
       global_step = tf.Variable(0, trainable=False)
 
@@ -201,10 +234,14 @@ def build_model(sess, graph, loss_model):
 
       loss = tf.reduce_mean(tf_func.nce_loss(embed, nce_weights, nce_biases, train_labels, sample, unigram_prob))
 
-    # tf.summary.scalar('loss', loss)
+    tf.summary.scalar('loss', loss)
 
+    starter_learning_rate = lr
+    lr = tf.train.exponential_decay(starter_learning_rate, global_step,
+                                               100000, 0.5, staircase=True)
     # Construct the SGD optimizer using a learning rate of 1.0.
-    optimizer = tf.train.GradientDescentOptimizer(1.0).minimize(loss, global_step=global_step)
+    optimizer = tf.train.GradientDescentOptimizer(lr).minimize(loss, global_step=global_step)
+    tf.summary.scalar('learning_rate', lr)
 
     # Compute the cosine similarity between minibatch examples and all embeddings.
     norm = tf.sqrt(tf.reduce_sum(tf.square(embeddings), 1, keep_dims=True))
@@ -218,10 +255,11 @@ def build_model(sess, graph, loss_model):
     saver = tf.train.Saver(tf.global_variables())
 
     # Save summary
-    # summary = tf.summary.merge_all()
-    # summary_writer = tf.summary.FileWriter(summary_path + '/summary', sess.graph)
-    summary = None
-    summary_writer = None
+    summary = tf.summary.merge_all()
+    summary_writer = tf.summary.FileWriter(experiment_summary_path, sess.graph)
+
+    # summary = None
+    # summary_writer = None
 
     tf.global_variables_initializer().run()
     print("Initialized")
@@ -255,8 +293,8 @@ def train(sess, model, data, dictionary, batch_size, num_skips, skip_window,
 
     # We perform one update step by evaluating the optimizer op (including it
     # in the list of returned values for session.run()
-    # _, loss_val, summary = sess.run([model.optimizer, model.loss, model.summary], feed_dict=feed_dict)
-    _, loss_val = sess.run([model.optimizer, model.loss], feed_dict=feed_dict)
+    _, loss_val, summary = sess.run([model.optimizer, model.loss, model.summary], feed_dict=feed_dict)
+    # _, loss_val = sess.run([model.optimizer, model.loss], feed_dict=feed_dict)
     average_loss += loss_val
 
     if step % average_loss_step == 0:
@@ -265,8 +303,8 @@ def train(sess, model, data, dictionary, batch_size, num_skips, skip_window,
       # The average loss is an estimate of the loss over the last 2000 batches.
       print("Average loss at step ", step, ": ", average_loss)
       average_loss = 0
-      # model.summary_writer.add_summary(summary, model.global_step.eval())
-      # model.summary_writer.flush()
+      model.summary_writer.add_summary(summary, model.global_step.eval())
+      model.summary_writer.flush()
 
     # Note that this is expensive (~20% slowdown if computed every 500 steps)
     if step % checkpoint_step == 0:
@@ -284,7 +322,7 @@ def train(sess, model, data, dictionary, batch_size, num_skips, skip_window,
       # model.saver.save(sess, chkpt_path, global_step=model.global_step.eval())
 
 
-  # model.summary_writer.close()
+  model.summary_writer.close()
 
   # Saving the final embedding to a file   
   final_embeddings = model.normalized_embeddings.eval()
@@ -334,19 +372,29 @@ if __name__ == '__main__':
   #         TODO You must implement this method "generate_batch"
   #         Uncomment below to check batch output
 
-  # batch, labels = generate_batch(data, batch_size=8, num_skips=2, skip_window=1)
-  # for i in range(8):
-  #   print(batch[i], reverse_dictionary[batch[i]],
-  #         '->', labels[i, 0], reverse_dictionary[labels[i, 0]])
+  batch, labels = generate_batch(data, batch_size=8, num_skips=2, skip_window=1)
+  for i in range(8):
+    print(batch[i], reverse_dictionary[batch[i]],
+          '->', labels[i, 0], reverse_dictionary[labels[i, 0]])
 
+
+  hyperparams_config_path = './hyperparams.yaml'
+  # config_name = 'default'
+  config_name = 'exp15'
+
+  with open(hyperparams_config_path) as fp:
+    hparams = yaml.load(fp)
+
+  hparams = hparams[config_name]
 
   ####################################################################################
   # Hyper Parameters to config
-  batch_size = 128
-  embedding_size = 128  # Dimension of the embedding vector.
-  skip_window = 4       # How many words to consider left and right.
-  num_skips = 8         # How many times to reuse an input to generate a label.
-
+  batch_size = hparams['batch_size']
+  embedding_size = hparams['embedding_size']  # Dimension of the embedding vector.
+  skip_window = hparams['skip_window']       # How many words to consider left and right.
+  num_skips = hparams['num_skips']         # How many times to reuse an input to generate a label.
+  lr = hparams['lr']             # Learning rate for the Gradient Descent Optimizer
+  loss_model = hparams['loss_model']
 
   # We pick a random validation set to sample nearest neighbors. Here we limit the
   # validation samples to the words that have a low numeric ID, which by
@@ -355,8 +403,15 @@ if __name__ == '__main__':
   valid_window = 100  # Only pick dev samples in the head of the distribution.
   valid_examples = np.random.choice(valid_window, valid_size, replace=False)
   num_sampled = 64    # Number of negative examples to sample.
+  # num_sampled = 32    # Number of negative examples to sample.
 
-  # summary_path = './summary_%s'%(loss_model)
+
+  summary_path = './summary/summary_%s'%(loss_model)
+
+  ## New lines add to organize the summaries for different hyperparameters
+  experiment_name = "lr_%f__batch_%d__embed_%d__window_%d__nskip_%d"%(lr, batch_size, embedding_size, skip_window, num_skips)
+  experiment_summary_path = os.path.join(summary_path, experiment_name)
+
   pretrained_model_path = './pretrained/'
 
   checkpoint_model_path = './checkpoints_%s/'%(loss_model)
@@ -364,7 +419,7 @@ if __name__ == '__main__':
 
   
   # maximum training step
-  max_num_steps  = 200001
+  max_num_steps  = hparams['max_num_steps']
   checkpoint_step = 50000
     
 
@@ -373,12 +428,14 @@ if __name__ == '__main__':
 
     ####################################################################################
     # Step 4: Build and train a skip-gram model.
-    model = build_model(sess, graph, loss_model)
+    model = build_model(sess, graph, loss_model, lr)
 
     # You must start with the pretrained model. 
     # If you want to resume from your checkpoints, change this path name
 
     load_pretrained_model(sess, model, pretrained_model_path)
+    # load_pretrained_model(sess, model, checkpoint_model_path)
+
 
 
     ####################################################################################
@@ -392,8 +449,9 @@ if __name__ == '__main__':
     # Step 7: Save the trained model.
     trained_steps = model.global_step.eval()
 
+    model_path = os.path.join(model_path, experiment_name)
     maybe_create_path(model_path)
     model_filepath = os.path.join(model_path, 'word2vec_%s.model'%(loss_model))
     print("Saving word2vec model as [%s]"%(model_filepath))
-    pickle.dump([dictionary, trained_steps, embeddings], open(model_filepath, 'w'))
+    pickle.dump([dictionary, trained_steps, embeddings], open(model_filepath, 'wb'))
 
