@@ -12,10 +12,10 @@ I	PRON	PRON
 can	VERB	VERB
 get	VERB	VERB
 to	PRT	PRT
-@glasgowfilm	X	VERB
+@glasgowfilm	X	X
 for	ADP	ADP
 Winter	NOUN	NOUN
-'s	PRT	PRT
+'s	PRT	VERB
 Bone	NOUN	NOUN
 -	.	.
 need	VERB	VERB
@@ -26,7 +26,7 @@ with	ADP	ADP
 job	NOUN	NOUN
 applications	NOUN	NOUN
 tonight	NOUN	NOUN
-then	ADV	ADP
+then	ADV	ADV
 !	.	.
 Trailer	NOUN	NOUN
 :	.	.
@@ -87,18 +87,18 @@ done	VERB	VERB
 Just	ADV	ADV
 leave	VERB	VERB
 it	PRON	PRON
-alone	ADV	VERB
+alone	ADV	NOUN
 ,	.	.
 and	CONJ	CONJ
 do	VERB	VERB
 n't	ADV	ADV
-regret	VERB	VERB
+regret	VERB	NOUN
 .	.	.
-Sometimes	ADV	VERB
+Sometimes	ADV	NOUN
 somethings	NOUN	NOUN
 turn	VERB	NOUN
-in-to	ADP	X
-dumb	ADJ	VERB
+in-to	ADP	NOUN
+dumb	ADJ	NOUN
 things	NOUN	NOUN
 .	.	.
 And	CONJ	CONJ
@@ -122,7 +122,7 @@ week	NOUN	NOUN
 .	.	.
 I	PRON	PRON
 'm	VERB	VERB
-excited	VERB	ADJ
+excited	VERB	VERB
 for	ADP	ADP
 xmas	NOUN	NOUN
 ,	.	.
@@ -137,7 +137,7 @@ steady	ADV	NOUN
 versus	CONJ	NOUN
 yen	NOUN	NOUN
 but	CONJ	CONJ
-market	NOUN	VERB
+market	NOUN	NOUN
 wary	ADJ	NOUN
 of	ADP	ADP
 intervention	NOUN	NOUN
@@ -146,7 +146,7 @@ Money	NOUN	NOUN
 ...:	.	.
 The	DET	DET
 dollar	NOUN	NOUN
-held	VERB	NOUN
+held	VERB	VERB
 near	ADP	NOUN
 its	PRON	PRON
 highest	ADJ	NOUN
@@ -167,7 +167,7 @@ than	ADP	ADP
 usual	ADJ	NOUN
 can	VERB	VERB
 be	VERB	VERB
-identified	VERB	ADJ
+identified	VERB	VERB
 and	CONJ	CONJ
 removed	VERB	VERB
 before	ADP	ADP
@@ -206,19 +206,19 @@ saying	VERB	NOUN
 Keep	VERB	VERB
 it	PRON	PRON
 tamped	VERB	VERB
-down	PRT	VERB
+down	PRT	ADP
 a	DET	DET
 coupla	NOUN	NOUN
 days	NOUN	NOUN
-then	ADP	ADP
+then	ADP	ADV
 bring	VERB	VERB
 her	PRON	PRON
 out	ADP	PRT
-early	ADV	NOUN
+early	ADV	ADV
 ?	.	.
 
-[	.	X
-GigaOM	NOUN	NOUN
+[	.	.
+GigaOM	NOUN	X
 ]	.	.
 DRM	NOUN	NOUN
 FAIL	VERB	NOUN
@@ -237,18 +237,18 @@ learned	VERB	VERB
 that	ADP	ADP
 the	DET	DET
 HDCP	NOUN	NOUN
-copy	NOUN	VERB
+copy	NOUN	NOUN
 protection	NOUN	NOUN
 scheme	NOUN	NOUN
 ...	.	.
 http://bit.ly/blWf0e	X	X
 
-From	ADP	NOUN
+From	ADP	ADP
 Green	NOUN	NOUN
 Newsfeed	NOUN	NOUN
 :	.	.
 AHFA	NOUN	NOUN
-extends	VERB	VERB
+extends	VERB	NOUN
 deadline	NOUN	NOUN
 for	ADP	ADP
 Sage	NOUN	NOUN
@@ -259,10 +259,10 @@ Nov	NOUN	NOUN
 5	NUM	NUM
 http://tinyurl.com/24agj38	X	X
 
-Thrilled	VERB	NOUN
+Thrilled	VERB	VERB
 about	ADP	ADP
 this	DET	DET
-@HPC//RT@DeLynnRizzo	X	NOUN
+@HPC//RT@DeLynnRizzo	X	X
 :	.	.
 girls	NOUN	NOUN
 ,	.	.
@@ -329,14 +329,14 @@ a	DET	DET
 Saturday	NOUN	NOUN
 though	ADV	NOUN
 .	.	.
-So	ADV	ADV
+So	ADV	X
 that	DET	DET
 's	VERB	VERB
 a	DET	DET
 thing	NOUN	NOUN
 .	.	.
 
-3	NUM	X
+3	NUM	NUM
 tests	NOUN	NOUN
 and	CONJ	CONJ
 an	DET	DET
@@ -346,7 +346,7 @@ today	NOUN	NOUN
 &gt;	X	X
 __	X	X
 &gt;	X	X
-also	ADV	ADV
+also	ADV	VERB
 i	PRON	PRON
 lost	VERB	VERB
 my	PRON	PRON
@@ -389,7 +389,7 @@ a	DET	DET
 problem	NOUN	NOUN
 that	DET	DET
 's	VERB	VERB
-wholly	ADV	NOUN
+wholly	ADV	ADV
 their	PRON	PRON
 fault	NOUN	NOUN
 and	CONJ	CONJ
@@ -398,16 +398,16 @@ it	PRON	PRON
 a	DET	DET
 "	.	.
 one-time	ADJ	X
-courtesy	NOUN	VERB
+courtesy	NOUN	NOUN
 "	.	.
 is	VERB	VERB
-insult	NOUN	VERB
+insult	NOUN	NOUN
 to	PRT	PRT
-injury	NOUN	VERB
+injury	NOUN	NOUN
 .	.	.
 They	PRON	PRON
 're	VERB	VERB
-clearly	ADV	VERB
+clearly	ADV	ADV
 not	ADV	ADV
 sorry	ADJ	ADJ
 !	.	.
@@ -416,8 +416,8 @@ sorry	ADJ	ADJ
 *Smiles	VERB	X
 up	ADP	PRT
 at	ADP	ADP
-him*	PRON	X
-Can	VERB	NOUN
+him*	PRON	NOUN
+Can	VERB	VERB
 we	PRON	PRON
 just	ADV	ADV
 ...	.	.
@@ -428,11 +428,11 @@ a	DET	DET
 while	NOUN	NOUN
 before	ADP	ADP
 round	NOUN	NOUN
-two	NUM	NOUN
+two	NUM	PRON
 ?	.	.
 
 @pjames	X	X
-Add	VERB	VERB
+Add	VERB	NOUN
 a	DET	DET
 little	ADJ	NOUN
 Belanger	NOUN	NOUN
@@ -450,7 +450,7 @@ after	ADP	ADP
 his	PRON	PRON
 household	NOUN	NOUN
 items	NOUN	NOUN
-arrive	VERB	NOUN
+arrive	VERB	VERB
 from	ADP	ADP
 D	NOUN	NOUN
 .	.	.
@@ -465,7 +465,7 @@ bit	ADJ	NOUN
 crap	NOUN	NOUN
 tonight	NOUN	NOUN
 
-Working	VERB	NOUN
+Working	VERB	VERB
 at	ADP	ADP
 my	PRON	PRON
 old	ADJ	ADJ
@@ -474,10 +474,10 @@ tomorrow	NOUN	NOUN
 to	PRT	PRT
 catch	VERB	VERB
 the	DET	DET
-bookkeeping	NOUN	NOUN
+bookkeeping	NOUN	VERB
 up	PRT	PRT
 .	.	.
-Money	NOUN	VERB
+Money	NOUN	NOUN
 to	PRT	PRT
 do	VERB	VERB
 easy	ADJ	NOUN
@@ -488,10 +488,10 @@ would	VERB	VERB
 just	ADV	ADV
 be	VERB	VERB
 sitting	VERB	VERB
-around	ADP	NOUN
+around	ADP	ADP
 anyway	NOUN	NOUN
 ?	.	.
-Yes	X	VERB
+Yes	X	NOUN
 plz	X	NOUN
 .	.	.
 
@@ -503,7 +503,7 @@ bro	X	NOUN
 I	PRON	PRON
 miss	VERB	VERB
 u	PRON	PRON
-U	PRON	NOUN
+U	PRON	PRON
 scared	VERB	VERB
 me	PRON	PRON
 to	PRT	PRT
@@ -514,7 +514,7 @@ cant	VERB	VERB
 live	VERB	VERB
 without	ADP	NOUN
 u	PRON	PRON
-U	PRON	NOUN
+U	PRON	PRON
 're	VERB	VERB
 more	ADJ	ADV
 than	ADP	ADP
@@ -522,7 +522,7 @@ a	DET	DET
 bro	NOUN	NOUN
 u	PRON	PRON
 're	VERB	VERB
-Like	ADP	ADP
+Like	ADP	VERB
 my	PRON	PRON
 twin	NOUN	NOUN
 Need	VERB	VERB
@@ -550,12 +550,12 @@ Derek	NOUN	NOUN
 when	ADV	ADV
 guys	NOUN	NOUN
 get	VERB	VERB
-hurt	VERB	ADV
+hurt	VERB	NOUN
 ,	.	.
 "	.	.
-kissing	VERB	ADP
+kissing	VERB	VERB
 the	DET	DET
-boo-boo	NOUN	X
+boo-boo	NOUN	NOUN
 "	.	.
 will	VERB	VERB
 not	ADV	ADV
@@ -574,13 +574,13 @@ Shreveport	NOUN	NOUN
 then	ADP	ADP
 Lake	NOUN	NOUN
 Charles	NOUN	NOUN
--might	VERB	X
+-might	VERB	NOUN
 as	ADP	ADP
 well	ADV	ADV
 shoot	VERB	NOUN
 through	ADP	ADP
 dat	DET	NOUN
-#BMT	X	NOUN
+#BMT	X	X
 after	ADP	ADP
 the	DET	DET
 slab	NOUN	NOUN
@@ -603,17 +603,17 @@ week	NOUN	NOUN
 ...	.	.
 
 Half	DET	NOUN
-baked	ADJ	NOUN
+baked	ADJ	VERB
 ,	.	.
 next	ADJ	ADJ
 how	ADV	ADV
 high	ADJ	NOUN
 ,	.	.
-grandma	NOUN	VERB
+grandma	NOUN	NOUN
 boys	NOUN	NOUN
 ,	.	.
-puff	VERB	VERB
-puff	VERB	VERB
+puff	VERB	NOUN
+puff	VERB	NOUN
 pass	VERB	NOUN
 ,	.	.
 and	CONJ	CONJ
@@ -651,7 +651,7 @@ feb	NOUN	NOUN
 No	DET	X
 loss	NOUN	NOUN
 is	VERB	VERB
-greater	ADJ	ADJ
+greater	ADJ	NOUN
 than	ADP	ADP
 the	DET	DET
 loss	NOUN	NOUN
@@ -704,8 +704,8 @@ Observances	NOUN	NOUN
 in	ADP	ADP
 Temecula	NOUN	NOUN
 and	CONJ	CONJ
-elsewhere	ADV	VERB
-throughout	ADP	VERB
+elsewhere	ADV	NOUN
+throughout	ADP	NOUN
 the	DET	DET
 region	NOUN	NOUN
 last	ADJ	ADJ
@@ -753,7 +753,7 @@ an	DET	DET
 80	NUM	NUM
 's	PRT	PRT
 and	CONJ	CONJ
-other	ADJ	VERB
+other	ADJ	ADJ
 throwbacks	NOUN	NOUN
 dance	NOUN	NOUN
 party	NOUN	NOUN
@@ -773,7 +773,7 @@ get	VERB	VERB
 the	DET	DET
 official	ADJ	NOUN
 set	NOUN	NOUN
-list	NOUN	VERB
+list	NOUN	NOUN
 to	PRT	PRT
 the	DET	DET
 show	NOUN	NOUN
@@ -828,7 +828,7 @@ wrong	ADJ	VERB
 about	ADP	ADP
 Murkowski	NOUN	NOUN
 ,	.	.
-look	VERB	VERB
+look	VERB	NOUN
 like	ADP	ADP
 she	PRON	PRON
 's	VERB	VERB
@@ -843,7 +843,7 @@ its	PRON	PRON
 head	NOUN	NOUN
 .	.	.
 three-way	ADJ	X
-race	NOUN	VERB
+race	NOUN	NOUN
 reportedly	ADV	NOUN
 ahead	ADV	NOUN
 in	ADP	ADP
@@ -853,22 +853,22 @@ AK	NOUN	NOUN
 I	PRON	PRON
 have	VERB	VERB
 lost	VERB	VERB
-everything	NOUN	NOUN
+everything	NOUN	VERB
 importing	ADJ	VERB
 in	ADP	ADP
 my	PRON	PRON
 life	NOUN	NOUN
 within	ADP	ADP
 the	DET	DET
-past	ADJ	NOUN
+past	ADJ	ADJ
 week	NOUN	NOUN
-anything	NOUN	NOUN
+anything	NOUN	VERB
 that	DET	ADP
 i	PRON	PRON
 loved	VERB	VERB
 is	VERB	VERB
 now	ADV	ADV
-gone	VERB	NOUN
+gone	VERB	VERB
 
 It	PRON	PRON
 is	VERB	VERB
@@ -890,16 +890,16 @@ a	DET	DET
 good	ADJ	ADJ
 note	NOUN	NOUN
 is	VERB	VERB
-always	ADV	ADV
+always	ADV	VERB
 nice	ADJ	NOUN
 .	.	.
 
 @MrzEndy	X	X
-tru	X	VERB
+tru	X	NOUN
 tru	X	NOUN
 I	PRON	PRON
 'm	VERB	VERB
-leavin	VERB	VERB
+leavin	VERB	NOUN
 again	ADV	ADV
 on	ADP	ADP
 Tuesday	NOUN	NOUN
@@ -908,7 +908,7 @@ yo	X	NOUN
 Going	VERB	VERB
 to	PRT	PRT
 start	VERB	VERB
-#HelloMornings	X	.
+#HelloMornings	X	X
 on	ADP	ADP
 Oct	NOUN	NOUN
 1	NUM	NUM
@@ -933,7 +933,7 @@ to	PRT	PRT
 tha	DET	VERB
 Game	NOUN	NOUN
 is	VERB	VERB
-droppin	VERB	VERB
+droppin	VERB	NOUN
 in	ADP	ADP
 a	DET	DET
 month	NOUN	NOUN
@@ -947,7 +947,7 @@ may	VERB	VERB
 have	VERB	VERB
 been	VERB	VERB
 and	CONJ	CONJ
-gone	VERB	NOUN
+gone	VERB	VERB
 ,	.	.
 but	CONJ	CONJ
 the	DET	DET
@@ -959,7 +959,7 @@ same	ADJ	NOUN
 .	.	.
 
 Cant	VERB	VERB
-wait	VERB	VERB
+wait	VERB	NOUN
 for	ADP	ADP
 the	DET	DET
 ravens	NOUN	NOUN
@@ -967,7 +967,7 @@ game	NOUN	NOUN
 tomorrow	NOUN	NOUN
 ....	.	.
 go	VERB	VERB
-ray	NOUN	VERB
+ray	NOUN	NOUN
 rice	NOUN	NOUN
 !!!!!!!	.	X
 
@@ -975,14 +975,14 @@ rice	NOUN	NOUN
 I	PRON	PRON
 have	VERB	VERB
 n't	ADV	ADV
-unfortunately	ADJ	VERB
+unfortunately	ADJ	ADV
 :(	X	X
 I	PRON	PRON
 missed	VERB	VERB
 the	DET	DET
 chance	NOUN	NOUN
 when	ADV	ADV
-theycame	VERB	VERB
+theycame	VERB	NOUN
 to	PRT	PRT
 the	DET	DET
 uk	X	NOUN
@@ -996,7 +996,7 @@ them	PRON	PRON
 
 Have	VERB	VERB
 DJ	NOUN	NOUN
-Got	VERB	NOUN
+Got	VERB	VERB
 Us	PRON	NOUN
 Fallin	VERB	NOUN
 in	ADP	ADP
@@ -1006,7 +1006,7 @@ my	PRON	PRON
 head	NOUN	NOUN
 .	.	.
 "	.	.
-Cause	ADP	NOUN
+Cause	ADP	ADV
 baby	NOUN	NOUN
 tonight	NOUN	NOUN
 ,	.	.
@@ -1014,7 +1014,7 @@ The	DET	DET
 dj	NOUN	NOUN
 got	VERB	VERB
 us	PRON	PRON
-fallin	VERB	VERB
+fallin	VERB	NOUN
 in	ADP	ADP
 love	NOUN	NOUN
 again	ADV	ADV
@@ -1027,19 +1027,19 @@ chance	NOUN	NOUN
 with	ADP	ADP
 you	PRON	PRON
 ?	.	.
-webcam	NOUN	VERB
+webcam	NOUN	NOUN
 enters	VERB	NOUN
 Sunday	NOUN	NOUN
 7:00	NUM	.
 pm	ADJ	NOUN
 ?	.	.
-please	X	X
+please	X	VERB
 ?	.	.
 to	PRT	PRT
 talk	VERB	VERB
 right	ADV	ADV
 !	.	.
-kisses	NOUN	VERB
+kisses	NOUN	NOUN
 on	ADP	ADP
 the	DET	DET
 chin	NOUN	NOUN
@@ -1090,18 +1090,18 @@ back	ADV	ADV
 later	ADV	ADV
 tonight	NOUN	NOUN
 .	.	.
-Thanks	NOUN	VERB
+Thanks	NOUN	NOUN
 for	ADP	ADP
 all	DET	DET
 the	DET	DET
 Friday	NOUN	NOUN
-Fucking	NOUN	NOUN
+Fucking	NOUN	VERB
 ,	.	.
 appreciate	VERB	VERB
 it	PRON	PRON
 .	.	.
 Make	VERB	VERB
-love	NOUN	NOUN
+love	NOUN	VERB
 ,	.	.
 not	ADV	ADV
 war	NOUN	NOUN
@@ -1117,7 +1117,7 @@ XOXO	X	X
 Awesome	ADJ	NOUN
 tennis	NOUN	NOUN
 practice	NOUN	NOUN
-today~	NOUN	X
+today~	NOUN	NOUN
 So	ADV	ADV
 happy	ADJ	ADJ
 to	PRT	PRT
@@ -1132,17 +1132,17 @@ PG&lt;E	NOUN	X
 donated	VERB	VERB
 35G	NUM	NOUN
 to	PRT	PRT
-state	NOUN	VERB
+state	NOUN	NOUN
 committe	NOUN	NOUN
 chairman	NOUN	NOUN
-investigating	VERB	VERB
+investigating	VERB	NOUN
 them	PRON	PRON
 1day	NOUN	NOUN
 after	ADP	ADP
 explosion	NOUN	NOUN
 in	ADP	ADP
-#sanBrunofire	X	.
--Who	PRON	X
+#sanBrunofire	X	X
+-Who	PRON	NOUN
 is	VERB	VERB
 still	ADV	ADV
 defendi	VERB	NOUN
@@ -1165,10 +1165,10 @@ this	DET	DET
 time	NOUN	NOUN
 of	ADP	ADP
 nigh	NOUN	NOUN
-t.i	NOUN	X
+t.i	NOUN	NOUN
 said	VERB	VERB
 '	.	.
-blame	VERB	VERB
+blame	VERB	NOUN
 rose	NOUN	NOUN
 '	.	.
 she	PRON	PRON
@@ -1180,7 +1180,7 @@ rose	NOUN	NOUN
 ?'	.	.
 lmao	X	X
 
-Fresh	ADJ	NOUN
+Fresh	ADJ	VERB
 out	PRT	PRT
 the	DET	DET
 psych	NOUN	NOUN
@@ -1192,7 +1192,7 @@ was	VERB	VERB
 awesome	ADJ	ADJ
 ,	.	.
 I	PRON	PRON
-finally	ADV	VERB
+finally	ADV	ADV
 get	VERB	VERB
 to	PRT	PRT
 relax	VERB	VERB
@@ -1207,17 +1207,17 @@ tonight	NOUN	NOUN
 good	ADJ	ADJ
 times	NOUN	NOUN
 are	VERB	VERB
-approaching	VERB	ADJ
+approaching	VERB	VERB
 
-Man	NOUN	X
+Man	NOUN	NOUN
 gets	VERB	VERB
 20	NUM	NUM
 years	NOUN	NOUN
 in	ADP	ADP
 murder	NOUN	NOUN
-plot	NOUN	VERB
+plot	NOUN	NOUN
 against	ADP	ADP
-judge	NOUN	NOUN
+judge	NOUN	VERB
 http://bit.ly/agB9iL	X	X
 
 RT	X	X
@@ -1233,10 +1233,10 @@ Gallery	NOUN	NOUN
 wants	VERB	VERB
 your	PRON	PRON
 "	.	.
-socially	ADV	NOUN
+socially	ADV	ADV
 relevant	ADJ	NOUN
 "	.	.
-comic	NOUN	VERB
+comic	NOUN	NOUN
 book	NOUN	NOUN
 cover	NOUN	NOUN
 designs	NOUN	NOUN
@@ -1245,7 +1245,7 @@ a	DET	DET
 Nov	NOUN	NOUN
 .	.	.
 show	NOUN	NOUN
-http://bit.ly/8YLSw4	X	.
+http://bit.ly/8YLSw4	X	X
 
 @joejonas	X	X
 @nickjonas	X	X
@@ -1261,7 +1261,7 @@ tonight	NOUN	NOUN
 !!!!	.	.
 
 @	ADP	X
-home	X	NOUN
+home	X	VERB
 chilling	VERB	VERB
 guess	VERB	NOUN
 I	PRON	PRON
@@ -1274,11 +1274,11 @@ rest	VERB	NOUN
 this	DET	DET
 week	NOUN	NOUN
 was	VERB	VERB
-crazy	ADJ	ADJ
+crazy	ADJ	NOUN
 but	CONJ	CONJ
 I	PRON	PRON
 'm	VERB	VERB
-ready	ADJ	VERB
+ready	ADJ	ADV
 for	ADP	ADP
 dis	DET	NOUN
 weekend	NOUN	NOUN
@@ -1319,11 +1319,11 @@ to	PRT	PRT
 reduce	VERB	VERB
 the	DET	DET
 time	NOUN	NOUN
-required	VERB	NOUN
+required	VERB	VERB
 for	ADP	ADP
 you	PRON	PRON
 to	PRT	PRT
-provide	VERB	VERB
+provide	VERB	NOUN
 solutions	NOUN	NOUN
 ?	.	.
 
@@ -1336,16 +1336,16 @@ for	ADP	ADP
 once	ADV	NOUN
 ,	.	.
 but	CONJ	CONJ
-no	X	X
+no	X	DET
 !	.	.
 You	PRON	PRON
 ask	VERB	VERB
 me	PRON	PRON
 about	ADP	ADP
-fucking	ADV	ADV
-donuts	NOUN	VERB
+fucking	ADV	VERB
+donuts	NOUN	NOUN
 you	PRON	PRON
-donut	NOUN	VERB
+donut	NOUN	NOUN
 ...	.	.
 have	VERB	VERB
 a	DET	DET
@@ -1360,24 +1360,24 @@ your	PRT	PRON
 bestfriend	NOUN	NOUN
 "	.	.
 get	VERB	VERB
-yo	PRON	ADJ
+yo	PRON	NOUN
 ass	NOUN	NOUN
 in	ADP	ADP
 trouble	NOUN	NOUN
 smdh	X	NOUN
 #doinme	X	X
 
-belles	NOUN	VERB
-mansion	NOUN	VERB
+belles	NOUN	NOUN
+mansion	NOUN	NOUN
 4	ADP	NUM
 bday	NOUN	NOUN
 dinner	NOUN	NOUN
 .	.	.
-eventhough	ADV	VERB
+eventhough	ADV	X
 its	PRON	PRON
 a	DET	DET
 day	NOUN	NOUN
-early	ADV	NOUN
+early	ADV	ADV
 .	.	.
 *N*I*K*K*I*	NOUN	X
 
@@ -1397,7 +1397,7 @@ will	VERB	VERB
 not	ADV	ADV
 let	VERB	VERB
 it	PRON	PRON
-away	ADV	VERB
+away	ADV	ADV
 for	ADP	ADP
 some	DET	DET
 days	NOUN	NOUN
@@ -1415,7 +1415,7 @@ like	X	ADP
 all	DET	DET
 night	NOUN	NOUN
 :	X	.
-L	X	NOUN
+L	X	X
 
 MetroPCS	NOUN	NOUN
 has	VERB	VERB
@@ -1433,7 +1433,7 @@ trying	VERB	VERB
 to	PRT	PRT
 help	VERB	VERB
 someone	NOUN	NOUN
-order	VERB	VERB
+order	VERB	NOUN
 a	DET	DET
 phone	NOUN	NOUN
 )	.	.
@@ -1441,12 +1441,12 @@ phone	NOUN	NOUN
 #fail	X	X
 
 @Dc_Luvs_Swift	X	X
-randomly	ADV	VERB
+randomly	ADV	X
 that	DET	DET
 just	ADV	ADV
 made	VERB	VERB
 me	PRON	PRON
-smile	VERB	VERB
+smile	VERB	NOUN
 :D	X	X
 do	VERB	VERB
 n't	ADV	ADV
@@ -1462,10 +1462,10 @@ here	ADV	ADV
 let	VERB	VERB
 u	PRON	PRON
 in	ADP	ADP
-:D	X	X
+:D	X	NOUN
 ...	.	.
 that	DET	DET
-def	ADV	VERB
+def	ADV	NOUN
 would	VERB	VERB
 be	VERB	VERB
 awesome	ADJ	ADJ
@@ -1474,12 +1474,12 @@ awesome	ADJ	ADJ
 The	DET	DET
 Basic	ADJ	NOUN
 Step	NOUN	NOUN
-Before	ADV	ADP
+Before	ADV	NOUN
 You	PRON	PRON
-Even	ADV	NOUN
+Even	ADV	VERB
 Start	VERB	NOUN
 Thinking	VERB	NOUN
-Of	ADP	NOUN
+Of	ADP	ADP
 Making	VERB	NOUN
 Your	PRON	NOUN
 ...:	.	.
@@ -1491,19 +1491,19 @@ well	ADV	NOUN
 known	ADJ	VERB
 subject	NOUN	NOUN
 ,	.	.
-yet	CONJ	VERB
+yet	CONJ	NOUN
 so	ADV	ADV
 ...	.	.
 http://bit.ly/9XQgSr	X	X
 
-Must	VERB	NOUN
+Must	VERB	VERB
 say	VERB	VERB
 iPhone	NOUN	NOUN
 is	VERB	VERB
 more	ADV	ADV
 accurate	ADJ	NOUN
 .	.	.
-Wasnt	VERB	VERB
+Wasnt	VERB	NOUN
 brought	VERB	VERB
 up	PRT	PRT
 here	ADP	ADV
@@ -1531,7 +1531,7 @@ paradise	NOUN	NOUN
 let	VERB	VERB
 's	PRON	PRT
 not	ADV	ADV
-forget	VERB	VERB
+forget	VERB	ADP
 the	DET	DET
 Princess	NOUN	NOUN
 Lover	NOUN	NOUN
@@ -1545,11 +1545,11 @@ http://yfrog.com/0fg2kfj	X	X
 
 @MATHHOFFA	X	X
 @darealjustjuice	X	X
-yo	X	VERB
+yo	X	X
 I	PRON	PRON
 put	VERB	VERB
 that	ADP	DET
-bitch	NOUN	VERB
+bitch	NOUN	NOUN
 boy	NOUN	NOUN
 in	ADP	ADP
 his	PRON	PRON
@@ -1560,7 +1560,7 @@ day	NOUN	NOUN
 .	.	.
 Do	VERB	VERB
 n't	ADV	ADV
-even	ADV	ADV
+even	ADV	VERB
 waste	VERB	VERB
 ya	PRON	ADJ
 time	NOUN	NOUN
@@ -1573,7 +1573,7 @@ RT	X	X
 Shout	VERB	VERB
 out	PRT	PRT
 to	PRT	PRT
-@Laureluxe	X	.
+@Laureluxe	X	X
 for	ADP	ADP
 a	DET	DET
 dope	ADJ	NOUN
@@ -1582,12 +1582,12 @@ today	NOUN	NOUN
 on	ADP	ADP
 @TheLuxeHour	X	X
 w/special	ADJ	X
-guest	NOUN	VERB
+guest	NOUN	NOUN
 @cheridennis	X	X
 ...	.	.
-audio	NOUN	VERB
+audio	NOUN	NOUN
 droppin	VERB	NOUN
-later	ADV	ADV
+later	ADV	NOUN
 tod	NOUN	NOUN
 ...	.	.
 
@@ -1600,7 +1600,7 @@ tonight	NOUN	NOUN
 after	ADP	ADP
 u	PRON	PRON
 get	VERB	VERB
-off	PRT	ADV
+off	PRT	PRT
 ?	.	.
 i	PRON	PRON
 know	VERB	VERB
@@ -1612,7 +1612,7 @@ it	PRON	PRON
 lol	X	X
 
 @besocialonline	X	X
-dank	X	VERB
+dank	X	NOUN
 je	ADP	NOUN
 Gert	NOUN	NOUN
 Jan	NOUN	NOUN
@@ -1627,7 +1627,7 @@ to	PRT	PRT
 St	NOUN	NOUN
 .	.	.
 Patty	NOUN	NOUN
-'s	NOUN	PRT
+'s	NOUN	VERB
 Day	NOUN	NOUN
 Party	NOUN	NOUN
 Tonight	NOUN	NOUN
@@ -1638,9 +1638,9 @@ having	VERB	VERB
 crazy	ADJ	NOUN
 drink	NOUN	NOUN
 Specials	NOUN	NOUN
-too	ADV	NOUN
+too	ADV	ADV
 ..	.	.
-tex	VERB	VERB
+tex	VERB	NOUN
 980-333-3923	NUM	.
 to	PRT	PRT
 get	VERB	VERB
@@ -1650,7 +1650,7 @@ guest	NOUN	NOUN
 list	NOUN	NOUN
 !	.	.
 
-Tidyin	VERB	VERB
+Tidyin	VERB	NOUN
 my	PRON	PRON
 room	NOUN	NOUN
 .	.	.
@@ -1661,17 +1661,17 @@ my	PRON	PRON
 hair	NOUN	NOUN
 .	.	.
 its	PRON	PRON
-soo	ADV	ADJ
+soo	ADV	NOUN
 nasty	ADJ	NOUN
 when	ADV	ADV
 its	PRON	PRON
-naturally	ADV	ADJ
+naturally	ADV	ADV
 curly	ADJ	NOUN
 .	.	.
 
 ...	.	.
-four	NUM	X
-fucking	ADJ	NOUN
+four	NUM	VERB
+fucking	ADJ	VERB
 years	NOUN	NOUN
 I	PRON	PRON
 've	VERB	VERB
@@ -1758,18 +1758,18 @@ you	PRON	PRON
 supposed	VERB	VERB
 to	PRT	PRT
 be	VERB	VERB
-studying/doing	VERB	X
+studying/doing	VERB	VERB
 homework	NOUN	NOUN
 !	.	.
 :p	X	X
 
 Mortgage	NOUN	NOUN
 Advice	NOUN	NOUN
-&gt;	X	X
+&gt;	X	NOUN
 First	ADJ	ADJ
 time	NOUN	NOUN
 home	NOUN	NOUN
-buyer	NOUN	VERB
+buyer	NOUN	NOUN
 with	ADP	ADP
 several	ADJ	NOUN
 questions	NOUN	NOUN
@@ -1793,7 +1793,7 @@ yeah	X	X
 when	ADV	ADV
 i	PRON	PRON
 got	VERB	VERB
-caught	VERB	VERB
+caught	VERB	NOUN
 up	PRT	PRT
 a	DET	DET
 year	NOUN	NOUN
@@ -1801,10 +1801,10 @@ ago	ADV	ADV
 ...	.	.
 you	PRON	PRON
 can	VERB	VERB
-prolly	ADV	VERB
+prolly	ADV	ADV
 stay	VERB	VERB
 with	ADP	ADP
-us	PRON	NOUN
+us	PRON	PRON
 ..	.	.
 im	PRON	PRON
 stayin	VERB	VERB
@@ -1816,7 +1816,7 @@ pull	NOUN	NOUN
 out	NOUN	PRT
 ,	.	.
 you	PRON	PRON
-cn	VERB	VERB
+cn	VERB	NOUN
 prolly	ADV	NOUN
 
 2011	NUM	NUM
@@ -1847,7 +1847,7 @@ oh	X	X
 nice	ADJ	NOUN
 ,	.	.
 im	PRON	PRON
-sdill	ADV	VERB
+sdill	ADV	NOUN
 at	ADP	ADP
 work	NOUN	NOUN
 =(	X	.
@@ -1861,8 +1861,8 @@ today	NOUN	NOUN
 =)	X	X
 
 @justinbieber	X	X
-omb	X	VERB
-ily	ADV	VERB
+omb	X	X
+ily	ADV	ADV
 hope	VERB	VERB
 one	NUM	NUM
 day	NOUN	NOUN
@@ -1872,7 +1872,7 @@ me	PRON	PRON
 'll	VERB	VERB
 cry	VERB	VERB
 !	.	.
-jk	X	VERB
+jk	X	NOUN
 but	CONJ	CONJ
 thats	DET	VERB
 not	ADV	ADV
@@ -1886,7 +1886,7 @@ end	NOUN	NOUN
 no	DET	DET
 matter	NOUN	NOUN
 what	PRON	PRON
-ily	ADV	NOUN
+ily	ADV	ADV
 &lt;	X	X
 3	X	X
 
@@ -1899,10 +1899,10 @@ Progress	NOUN	NOUN
 @RheaFayeB	X	X
 yaaaayyy	X	NOUN
 !!!!!	.	.
-Same	ADJ	NOUN
+Same	ADJ	VERB
 to	PRT	PRT
 you	PRON	PRON
-rhea	NOUN	VERB
+rhea	NOUN	NOUN
 !!!!!	.	.
 This	DET	DET
 year	NOUN	NOUN
@@ -1916,7 +1916,7 @@ sure	ADJ	ADJ
 to	PRT	PRT
 ride	VERB	VERB
 that	DET	DET
-epic	NOUN	VERB
+epic	NOUN	ADJ
 wave	NOUN	NOUN
 ;)	X	X
 
@@ -1927,11 +1927,11 @@ SATURDAY	NOUN	NOUN
 3	X	X
 !!!	.	.
 
-Nothing	NOUN	NOUN
+Nothing	NOUN	VERB
 like	ADP	ADP
 getting	VERB	VERB
 no	DET	DET
-sleep	NOUN	VERB
+sleep	NOUN	NOUN
 before	ADP	ADP
 a	DET	DET
 5	NUM	NUM
@@ -1943,7 +1943,7 @@ trip	NOUN	NOUN
 Bestfriend	NOUN	NOUN
 wanna	VERB	VERB
 go	VERB	VERB
-wit	ADP	VERB
+wit	ADP	ADP
 me	PRON	PRON
 to	PRT	PRT
 get	VERB	VERB
@@ -1967,7 +1967,7 @@ building	VERB	NOUN
 my	PRON	PRON
 portfolio	NOUN	NOUN
 for	ADP	ADP
-over	ADP	VERB
+over	ADP	NOUN
 a	DET	DET
 month	NOUN	NOUN
 now	ADV	ADV
@@ -1980,7 +1980,7 @@ quite	ADV	VERB
 finish	VERB	VERB
 it	PRON	PRON
 .	.	.
-Sigh	NOUN	NOUN
+Sigh	NOUN	X
 .	.	.
 
 RT	X	X
@@ -1993,10 +1993,10 @@ on	ADP	ADP
 fire	NOUN	NOUN
 !	.	.
 Our	PRON	PRON
-tvguide.ca/soaps	NOUN	X
+tvguide.ca/soaps	NOUN	NOUN
 poll	NOUN	NOUN
 is	VERB	VERB
-fiery	ADJ	VERB
+fiery	ADJ	NOUN
 tonight	NOUN	NOUN
 .	.	.
 Do	VERB	VERB
@@ -2030,7 +2030,7 @@ know	VERB	VERB
 of	ADP	ADP
 sumthing	NOUN	NOUN
 Trey	NOUN	NOUN
-themed-	ADJ	X
+themed-	ADJ	NOUN
 Im	PRON	PRON
 there	ADV	ADV
 ok	X	NOUN
@@ -2049,7 +2049,7 @@ Jan	NOUN	NOUN
 .	.	.
 22	NUM	NUM
 ,	.	.
-4:30	NUM	X
+4:30	NUM	NOUN
 to	PRT	PRT
 ??.	.	.
 Contact	VERB	NOUN
@@ -2067,7 +2067,7 @@ have	VERB	VERB
 no	DET	DET
 time	NOUN	NOUN
 to	PRT	PRT
-fan-girl	VERB	X
+fan-girl	VERB	NOUN
 ...	.	.
 I	PRON	PRON
 miss	VERB	VERB
@@ -2086,8 +2086,8 @@ Sid	NOUN	NOUN
 and	CONJ	CONJ
 Jack	NOUN	NOUN
 were	VERB	VERB
-both	DET	ADJ
-drafted	VERB	NOUN
+both	DET	NOUN
+drafted	VERB	VERB
 before	ADP	ADP
 you	PRON	PRON
 and	CONJ	CONJ
@@ -2104,14 +2104,14 @@ times	NOUN	NOUN
 RT	X	X
 @savageNON	X	X
 :	.	.
-yo	X	X
+yo	X	NOUN
 ,	.	.
 too	ADV	ADV
 many	ADJ	ADJ
-kidz	NOUN	VERB
+kidz	NOUN	NOUN
 be	VERB	VERB
-gettin	VERB	VERB
-high	NOUN	VERB
+gettin	VERB	NOUN
+high	NOUN	NOUN
 all	DET	DET
 the	DET	DET
 time	NOUN	NOUN
@@ -2120,7 +2120,7 @@ they	PRON	PRON
 ai	VERB	VERB
 n't	ADV	ADV
 showin	VERB	VERB
-enough	ADJ	VERB
+enough	ADJ	NOUN
 SKILLS	NOUN	NOUN
 .	.	.
 that	DET	DET
@@ -2128,11 +2128,11 @@ that	DET	DET
 what	PRON	PRON
 we	PRON	PRON
 call	VERB	VERB
-fakin	VERB	VERB
+fakin	VERB	NOUN
 the	DET	DET
 funk	NOUN	NOUN
 !	.	.
-st	NOUN	ADJ
+st	NOUN	NOUN
 ...	.	.
 
 I	PRON	PRON
@@ -2159,12 +2159,12 @@ I	PRON	PRON
 was	VERB	VERB
 a	DET	DET
 whale	NOUN	NOUN
-I'd	PRON	.
+I'd	PRON	NOUN
 get	VERB	VERB
 drunk	ADJ	ADJ
 and	CONJ	CONJ
 fuck	VERB	VERB
-shit	NOUN	VERB
+shit	NOUN	NOUN
 up	PRT	PRT
 all	DET	ADP
 the	DET	DET
@@ -2206,7 +2206,7 @@ Electronics	NOUN	NOUN
 Show	NOUN	NOUN
 :	.	.
 Attendees	NOUN	NOUN
-take	VERB	VERB
+take	VERB	NOUN
 to	PRT	PRT
 Twitter	NOUN	VERB
 on	ADP	ADP
@@ -2217,7 +2217,7 @@ If	ADP	ADP
 we	PRON	PRON
 listened	VERB	VERB
 to	PRT	PRT
-attendees	NOUN	VERB
+attendees	NOUN	NOUN
 at	ADP	ADP
 the	DET	DET
 Consumer	NOUN	NOUN

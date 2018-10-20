@@ -154,7 +154,7 @@ class CRFPerceptron(Tagger):
     def __init__(self, feats = Feats()):
         self.feats = feats
         self.le = preprocessing.LabelEncoder()
-        self.cls = struct_perceptron.StructuredPerceptron(self, max_iter=25, average=True, verbose=True)
+        self.cls = struct_perceptron.StructuredPerceptron(self, max_iter=24, average=True, verbose=True)#, decay_t0=-0.05, decay_exponent=1)
 
     def tag_sent(self, sent):
         """Calls viterbi code to find the best tags for a sentence."""

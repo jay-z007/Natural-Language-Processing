@@ -23,9 +23,33 @@ def run_viterbi(emission_scores, trans_scores, start_scores, end_scores):
     assert emission_scores.shape[1] == L
     N = emission_scores.shape[0]
 
+    emission_scores = emission_scores.T # [L, N]
+    best_previous_scores = (start_scores + emission_scores[:, 0]).reshape(L, 1) # [L, 1]
+    back_pointers = np.zeros((L, N), dtype=int)
+
     y = []
-    for i in xrange(N):
-        # stupid sequence
-        y.append(i % L)
-    # score set to 0
-    return (0.0, y)
+
+    for i in xrange(1, N):
+        # add best_previous_score to the transition matrix, elementwise
+        # This will result in a matrix of size [L, L].
+        # Then add the corresponding emission prob and find the max in each column
+        # This will become the new best_previous_scores for the next loop/column
+
+        new_scores = emission_scores[:, i] + best_previous_scores + trans_scores
+        back_pointers[:, i] = np.argmax(new_scores, axis=0)
+        best_previous_scores = np.amax(new_scores, axis=0).reshape(L, 1)
+
+    best_previous_scores = np.squeeze(best_previous_scores) 
+
+    best_previous_scores += end_scores
+    max_ind = np.argmax(best_previous_scores)
+
+	# Backtracking the best path
+    for i in range(1, N)[::-1]:
+        y.append(max_ind)
+        max_ind = back_pointers[max_ind, i]
+
+    y.append(max_ind)
+
+	# return the best score and the reversed sequence. 
+    return (np.amax(best_previous_scores), y[::-1])

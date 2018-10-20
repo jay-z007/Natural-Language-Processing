@@ -10,7 +10,8 @@ def run_viterbi_test():
 
     Compares both the best sequence and its score to make sure Viterbi is correct.
     """
-    from viterbi_soln import run_viterbi
+    # from viterbi_soln import run_viterbi
+    from viterbi import run_viterbi
     from numpy import random
     import numpy as np
     from itertools import product
@@ -39,7 +40,6 @@ def run_viterbi_test():
 
         # run viterbi
         (viterbi_s,viterbi_y) = run_viterbi(emission_scores, trans_scores, start_scores, end_scores)
-        # print "Viterbi", viterbi_s, viterbi_y
 
         # compute the best sequence and score
         best_y = []
