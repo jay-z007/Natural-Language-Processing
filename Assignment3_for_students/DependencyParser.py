@@ -44,7 +44,6 @@ class DependencyParserModel(object):
         """
 
         with graph.as_default():
-            self.embeddings = tf.Variable(embedding_array, dtype=tf.float32)
 
             """
             ===================================================================
@@ -75,17 +74,72 @@ class DependencyParserModel(object):
             
             ===================================================================
             """
+            ## Freezing the embeddings
+            # self.embeddings = tf.Variable(embedding_array, dtype=tf.float32, trainable=False)
+            self.embeddings = tf.Variable(embedding_array, dtype=tf.float32)
+
+            n_transitions = parsing_system.numTransitions()
+
+            self.train_inputs = tf.placeholder(tf.int32, shape=(Config.batch_size, Config.n_Tokens))
+            self.train_labels = tf.placeholder(tf.float32, shape=(Config.batch_size, n_transitions))
+            self.test_inputs = tf.placeholder(tf.int32, shape=(48,))
+
+            ## lookup from embedding array
+            train_embed = tf.nn.embedding_lookup(self.embeddings, self.train_inputs)
+            train_embed = tf.reshape(train_embed, [Config.batch_size, -1])
 
 
+            ## DO NOT USE THIS FOLLOWING COMMENTED BLOCK
+            ## generate weights and biases (Default) [*** Use the generalized weights]
+            # weights_input = tf.Variable(tf.random.truncated_normal(shape=(Config.embedding_size*Config.n_Tokens , Config.hidden_size), stddev=0.1))
+            # biases_input = tf.Variable(tf.random.truncated_normal(shape=(1, Config.hidden_size), stddev=0.1))
+            # weights_output = tf.Variable(tf.random.truncated_normal(shape=(Config.hidden_size, n_transitions), stddev=0.1))
+
+            ## Generalized weight and bias init for sequential hidden layers
+            shapes = [Config.embedding_size*Config.n_Tokens] + Config.hidden_size + [n_transitions]
+            weights = [tf.Variable(tf.random.truncated_normal((shape1, shape2), stddev=0.1)) for shape1, shape2 in zip(shapes, shapes[1:])]
+            biases = [tf.Variable(tf.random.truncated_normal((1, shape), stddev=0.1)) for shape in Config.hidden_size]
+
+            ## Weights init for Parallel hidden layers
+            # weights_word = tf.Variable(tf.random.truncated_normal((Config.embedding_size*18, Config.hidden_size[0]), stddev=0.1))
+            # weights_pos = tf.Variable(tf.random.truncated_normal((Config.embedding_size*18, Config.hidden_size[0]), stddev=0.1))
+            # weights_dep = tf.Variable(tf.random.truncated_normal((Config.embedding_size*12, Config.hidden_size[0]), stddev=0.1))
+            # weights_output = tf.Variable(tf.random.truncated_normal((Config.hidden_size[0]*3, n_transitions), stddev=0.1))
+            # weights = [weights_word, weights_pos, weights_dep, weights_output]
+            # biases = [tf.Variable(tf.random.truncated_normal((1, Config.hidden_size[0]), stddev=0.1))]*3
+    
+
+            ## Generate mask for ignoring the transitions with -1 label
+            mask = tf.cast(self.train_labels >= 0, tf.float32)
+
+            ## forward pass
+            # self.prediction = self.forward_pass(train_embed, weights_input, biases_input, weights_output)
+            self.prediction = self.forward_pass(train_embed, weights, biases)
+            
+            pred = tf.math.multiply(self.prediction, mask)
+            labels = tf.argmax(self.train_labels, axis=1)
+            
+            ## Loss
+            ## For regularization: creating a combined list of weights and biases and 
+            ## then sum over the l2 loss of each item in that list
+            regularization = Config.lam * sum(tf.nn.l2_loss(w) for w in weights+biases) 
+            cross_entropy = tf.losses.sparse_softmax_cross_entropy(logits=pred, labels=labels)
+            self.loss = cross_entropy + regularization
+
+            ## Trying Different Optimizers
             optimizer = tf.train.GradientDescentOptimizer(Config.learning_rate)
+            # optimizer = tf.train.AdagradOptimizer(Config.learning_rate)
+            # optimizer = tf.train.AdamOptimizer(Config.learning_rate)
             grads = optimizer.compute_gradients(self.loss)
             clipped_grads = [(tf.clip_by_norm(grad, 5), var) for grad, var in grads]
             self.app = optimizer.apply_gradients(clipped_grads)
+            # self.app = optimizer.apply_gradients(grads)
 
             # For test data, we only need to get its prediction
             test_embed = tf.nn.embedding_lookup(self.embeddings, self.test_inputs)
             test_embed = tf.reshape(test_embed, [1, -1])
-            self.test_pred = self.forward_pass(test_embed, weights_input, biases_input, weights_output)
+            # self.test_pred = self.forward_pass(test_embed, weights_input, biases_input, weights_output)
+            self.test_pred = self.forward_pass(test_embed, weights, biases)
 
             # intializer
             self.init = tf.global_variables_initializer()
@@ -179,12 +233,13 @@ class DependencyParserModel(object):
         Util.writeConll('result_test.conll', testSents, predTrees)
 
 
-    def forward_pass(self, embed, weights_input, biases_inpu, weights_output):
+    def forward_pass(self, embed, weights, biases):
+#     def forward_pass(self, embed, weights_input, biases_input, weights_output):
         """
 
-        :param embed:
-        :param weights:
-        :param biases:
+        :param embed: batch_size, feature_size*embedding_size
+        :param weights: feature_size*embedding_size, hidden_size
+        :param biases: hidden_size
         :return:
         """
         """
@@ -195,7 +250,30 @@ class DependencyParserModel(object):
 
         =======================================================
         """
+        h = embed
+        
+        for i in range(len(weights)-1):
+            h = tf.matmul(h, weights[i]) + biases[i]
+            h = tf.pow(h, 3)
+#             h = tf.sigmoid(h)
+#             h = tf.tanh(h)
+#             h = tf.nn.relu(h)
+        return tf.matmul(h, weights[-1])
 
+
+
+##         Uncomment this for parallel hidden layers
+#         word = embed[::, :18*Config.embedding_size]
+#         pos = embed[::, 18*Config.embedding_size: 36*Config.embedding_size]
+#         dep = embed[::, 36*Config.embedding_size:]
+#         h_word = tf.pow(tf.matmul(word, weights[0]) + biases[0], 3)
+#         h_pos = tf.pow(tf.matmul(pos, weights[1]) + biases[1], 3)
+#         h_dep = tf.pow(tf.matmul(dep, weights[2]) + biases[2], 3)
+        
+#         h = tf.concat([h_word, h_pos, h_dep], axis=1)
+#         return tf.matmul(h, weights[-1])
+        
+        
 
 
 def genDictionaries(sents, trees):
@@ -271,6 +349,97 @@ def getFeatures(c):
 
     =================================================================
     """
+    features = []
+
+    ## Token indices
+    s1 = c.getStack(0)
+    s2 = c.getStack(1)
+    s3 = c.getStack(2)
+    b1 = c.getBuffer(0)
+    b2 = c.getBuffer(1)
+    b3 = c.getBuffer(2)
+
+    lc1_s1 = c.getLeftChild(s1, 1)
+    rc1_s1 = c.getRightChild(s1, 1)
+    lc2_s1 = c.getLeftChild(s1, 2)
+    rc2_s1 = c.getRightChild(s1, 2)
+
+    lc1_s2 = c.getLeftChild(s2, 1)
+    rc1_s2 = c.getRightChild(s2, 1)
+    lc2_s2 = c.getLeftChild(s2, 2)
+    rc2_s2 = c.getRightChild(s2, 2)
+
+    lc1_lc1_s1 = c.getLeftChild(lc1_s1, 1)
+    rc1_rc1_s1 = c.getRightChild(rc1_s1, 1)
+
+    lc1_lc1_s2 = c.getLeftChild(lc1_s2, 1)
+    rc1_rc1_s2 = c.getRightChild(rc1_s2, 1)
+
+    ## Word IDs
+    word_ids = [
+        getWordID(c.getWord(s1)),
+        getWordID(c.getWord(s2)),
+        getWordID(c.getWord(s3)),
+        getWordID(c.getWord(b1)),
+        getWordID(c.getWord(b2)),
+        getWordID(c.getWord(b3)),
+        getWordID(c.getWord(lc1_s1)),
+        getWordID(c.getWord(rc1_s1)),
+        getWordID(c.getWord(lc2_s1)),
+        getWordID(c.getWord(rc2_s1)),
+        getWordID(c.getWord(lc1_s2)),
+        getWordID(c.getWord(rc1_s2)),
+        getWordID(c.getWord(lc2_s2)),
+        getWordID(c.getWord(rc2_s2)),
+        getWordID(c.getWord(lc1_lc1_s1)),
+        getWordID(c.getWord(rc1_rc1_s1)),
+        getWordID(c.getWord(lc1_lc1_s2)),
+        getWordID(c.getWord(rc1_rc1_s2))
+    ]
+    
+    ## POS IDs
+    pos_ids = [
+        getPosID(c.getPOS(s1)),
+        getPosID(c.getPOS(s2)),
+        getPosID(c.getPOS(s3)),
+        getPosID(c.getPOS(b1)),
+        getPosID(c.getPOS(b2)),
+        getPosID(c.getPOS(b3)),
+        getPosID(c.getPOS(lc1_s1)),
+        getPosID(c.getPOS(rc1_s1)),
+        getPosID(c.getPOS(lc2_s1)),
+        getPosID(c.getPOS(rc2_s1)),
+        getPosID(c.getPOS(lc1_s2)),
+        getPosID(c.getPOS(rc1_s2)),
+        getPosID(c.getPOS(lc2_s2)),
+        getPosID(c.getPOS(rc2_s2)),
+        getPosID(c.getPOS(lc1_lc1_s1)),
+        getPosID(c.getPOS(rc1_rc1_s1)),
+        getPosID(c.getPOS(lc1_lc1_s2)),
+        getPosID(c.getPOS(rc1_rc1_s2))
+    ]
+
+    ## Labels IDs
+    label_ids = [
+        getLabelID(c.getLabel(lc1_s1)),
+        getLabelID(c.getLabel(rc1_s1)),
+        getLabelID(c.getLabel(lc2_s1)),
+        getLabelID(c.getLabel(rc2_s1)),
+        getLabelID(c.getLabel(lc1_s2)),
+        getLabelID(c.getLabel(rc1_s2)),
+        getLabelID(c.getLabel(lc2_s2)),
+        getLabelID(c.getLabel(rc2_s2)),
+        getLabelID(c.getLabel(lc1_lc1_s1)),
+        getLabelID(c.getLabel(rc1_rc1_s1)),
+        getLabelID(c.getLabel(lc1_lc1_s2)),
+        getLabelID(c.getLabel(rc1_rc1_s2))
+    ]
+
+    features.extend(word_ids)
+    features.extend(pos_ids)
+    features.extend(label_ids)
+
+    return features
 
 
 
@@ -302,15 +471,20 @@ def genTrainExamples(sents, trees):
                 features.append(feat)
                 labels.append(label)
                 c = parsing_system.apply(c, oracle)
+
+            # if c.tree.equal(trees[i]):
+            #     print("Apply function is working Fine")
+
     return features, labels
 
 
 def load_embeddings(filename, wordDict, posDict, labelDict):
     dictionary, word_embeds = pickle.load(open(filename, 'rb'))
-
+    
     embedding_array = np.zeros((len(wordDict) + len(posDict) + len(labelDict), Config.embedding_size))
-    knownWords = wordDict.keys()
+    knownWords = wordDict.keys()    
     foundEmbed = 0
+    
     for i in range(len(embedding_array)):
         index = -1
         if i < len(knownWords):
@@ -324,6 +498,10 @@ def load_embeddings(filename, wordDict, posDict, labelDict):
             embedding_array[i] = word_embeds[index]
         else:
             embedding_array[i] = np.random.rand(Config.embedding_size) * 0.02 - 0.01
+    
+    	    ## This following line is for creating a fixed bit vector for POS and Labels
+            # embedding_array[i][i%Config.embedding_size] = 1
+            
     print "Found embeddings: ", foundEmbed, "/", len(knownWords)
 
     return embedding_array

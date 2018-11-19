@@ -102,6 +102,23 @@ class ParsingSystem:
 
         =================================================================
         """
+        if t.startswith("S"):
+            c.shift()
+
+        else:
+            label = t[2:-1]
+            if t.startswith("L"):
+                head = c.getStack(0)
+                tail = c.getStack(1)
+                c.removeSecondTopStack()
+            else:
+                head = c.getStack(1)
+                tail = c.getStack(0)
+                c.removeTopStack()
+
+            c.addArc(head, tail, label)
+
+        return c
 
     def numTransitions(self):
         return len(self.transitions)
